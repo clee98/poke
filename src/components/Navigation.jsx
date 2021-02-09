@@ -16,7 +16,7 @@ class Navigation extends react.Component {
   }
 
 
-  render(props) {
+  render() {
     return (
       // <div className="Navigation">
         <Navbar bg="light" expand="lg">

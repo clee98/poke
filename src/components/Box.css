@@ -1,0 +1,71 @@
+.grid{
+    margin: auto;
+    /* justify-items: center; */
+    text-align: center;
+    /* min-height: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: row; */
+    width: 80%;
+    
+}
+
+.pokemon {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* Num Entries Per Page */
+.numEntries {
+    display: block;
+    width: 100%;
+}
+
+.numEntries ul {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+}
+
+li {
+    list-style: none;
+    text-align: right;
+    display: inline;
+    margin: 5px;
+}
+
+li:not(.unclickable):hover {
+    color: blue;
+    cursor: pointer;
+}
+
+/* Bootstrap css for this */
+li:not(.unclickable):active {
+    text-decoration: underline;
+}
+
+/* Pagination */
+.pagination {
+    display: block;
+    width: 100%;
+}
+
+.pagination * {
+    margin: 10px;
+}
+
+.pagination button:hover {
+    background-color: lightblue;
+}
+
+
+
+
+
+
+/* body {
+    margin: auto;
+} */

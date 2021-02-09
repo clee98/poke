@@ -11,3 +11,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ################# CardTable ################ */
+
+
+/* ----------------- Number of Entries -------- */
+
+.numEntries {
+  display: block;
+  width: 100%;
+}
+
+.numEntries ul {
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-right: 10px;
+}
+
+li {
+  list-style: none;
+  text-align: right;
+  display: inline;
+  margin: 5px;
+}
+
+li:not(.unclickable):hover {
+  color: blue;
+  cursor: pointer;
+}
+
+/* Bootstrap css for this */
+li:not(.unclickable):active {
+  text-decoration: underline;
+}
+
+/* --------------- Pagination --------------- */
+.pagination {
+  margin: auto;
+  display: block;
+  width: 50%;
+}
+
+.pagination * {
+  margin: 20px;
+}
+
+.pagination button:hover {
+  background-color: lightblue;
+}

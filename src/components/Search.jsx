@@ -8,17 +8,17 @@ class Search extends react.Component {
   constructor(props) {
     super(props);
     this.state = {
-      arr: []
+      array: this.props.pokemon.slice(0, 5)
     }
-    // console.log(props);
   }
+  
+    
 
   componentDidMount() {
-    
   }
 
   api = () => {
-    this.setState({arr: []});
+    console.log('running')
     let tempArr = [];
     // While loop with conditions that count is <= 5 and we loop through all pokemon to see if
     // we get up to 5 pokemons with the searched keywords
@@ -40,14 +40,14 @@ class Search extends react.Component {
     }
     //contributes to firing render function again
     this.setState({
-      arr: tempArr
+      array: tempArr
     });
   }
 
   render() {
     return (
 			<FormGroup>
-				<Autocomplete onInputChange={this.api} id="combo-box-demo" options={this.state.arr}	getOptionLabel={(option) => option.name}  
+				<Autocomplete onInputChange={this.api} id="combo-box-demo" options={this.state.array}	getOptionLabel={(option) => option.name}  
 				style={{ width: 300 }} renderInput={(params) => <TextField {...params} label="Search a Pocket Monster" variant="outlined"/>}/>
 		
 				{/* <Button onClick={this.api} variant="outline-success">Search</Button> */}

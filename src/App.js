@@ -2,6 +2,7 @@ import './App.css';
 import react from 'react';
 import axios from 'axios';
 import Navigation from './components/Navigation'
+import CardTable from './components/CardTable'
 
 class App extends react.Component {
   constructor(props) {
@@ -11,6 +12,13 @@ class App extends react.Component {
       pokemon: []
     }
 
+    
+    
+    
+    
+  }
+
+  componentDidMount() {
     // Fetch pokemon data
     axios
     .get("https://pokeapi.co/api/v2/pokemon/?limit=1118/")
@@ -19,13 +27,6 @@ class App extends react.Component {
         pokemon: response.data.results
       })
     })
-    
-    
-    
-  }
-
-  componentDidMount() {
-    
   }
 
   render() {
@@ -39,6 +40,7 @@ class App extends react.Component {
           crossorigin="anonymous"
           />
           <Navigation pokemon={this.state.pokemon}/>
+          <CardTable pokemon={this.state.pokemon}/>
         </header>
         <body>
           <div className="App">
