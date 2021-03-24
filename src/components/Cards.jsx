@@ -1,36 +1,39 @@
-import react from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
+import axios from 'axios'
 
-class Cards extends react.Component {
-  constructor(props) {
-    super(props);
+const Cards = ({ pokeInfo }) => {
 
-    this.state = {
-      description: "",
-      image: ""
-    }
-  }
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const name = pokeInfo.name;
 
-  componentDidMount() {
-    // Retrieve each separate pokemon's api link and get information through that link and store
-    // in state variables
-  }
+  
+  useEffect(() => {
+    const getCardInfo = async () => {
+      await axios
+      .get(pokeInfo.url)
+      .then(({ data }) => {
+        setImage(data.sprites.front_default);
+      });
+
+    };
+    getCardInfo();
+  });
 
 
 
-  render() {
-    return (
-      <Card style={{ width: '18rem' }} key={0} className='box'>
-        <Card.Img variant="top"/>
-        <Card.Body>
-          <Card.Title>{}</Card.Title>
-          <Card.Text>
-            {}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    )
-  }
+  return (
+    <Card style={{ width: '18rem' }} key={0} className='box'>
+      <Card.Img variant="top" src={image} />
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>
+          {description}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  )
 }
 
 export default Cards;

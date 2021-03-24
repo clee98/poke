@@ -1,46 +1,61 @@
-import react from 'react';
-import { Card , Button} from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Card , Button } from 'react-bootstrap';
 import Cards from './Cards'
 
-class CardTable extends react.Component {
-  constructor(props) {
-    super(props);
+const CardTable = ({ pokemon }) => {
 
-    this.state = {
-      pokeOnPage: this.props.pokemon.slice(0, 30),
-      pageNum: 1,
-      numCardsPerPage: 30,
-      maxPageNum: 38
+  const [pokeOnPage, setPokeOnPage] = useState(pokemon.slice(0,30));
+  const [pageNum, setPageNum] = useState(1);
+  const [numCardsPerPage, setNumCardsPerPage] = useState(30);
+  const [maxPageNum, setMaxPageNum] = useState(38);
+
+  useEffect(() => {
+    console.log(pokeOnPage);
+    setPokeOnPage(pokemon.slice((pageNum - 1) * 30, pageNum * 30));
+  }, [pageNum]);
+
+  const mapHelper = pokeOnPage.map((poke) => {
+    return (
+      <Cards pokeInfo={poke}/>
+    );
+  });
+      
+
+  const decrementPageNum = () => {
+    if (pageNum > 1) {
+      setPageNum(pageNum - 1);
     }
-  }
+  };
 
-
-  componentDidMount() {
-
-  }
+  const incrementPageNum = () => {
+    if (pageNum < maxPageNum) {
+      setPageNum(pageNum + 1);
+    }
+  };
 
     
-  render(){
-    return(
-      <div className='grid'>
-        <div className='numEntries'>
-          <ul>
-            <li onClick={e => this.setNumEntries(30)}>30</li>
-            <li className='unclickable'>|</li>
-            <li onClick={e => this.setNumEntries(50)}>50</li>
-          </ul>
-        </div>
-        <Cards pokeInfo={this.state.pokeOnPage[0]}/>
-        <div className='pagination'>
-          <button onClick={this.decrementPageNum}>Prev</button>
-          {this.state.pageNum}
-          /
-          {this.state.maxPageNum}
-          <button onClick={this.incrementPageNum}>Next</button>
-        </div>
+  return(
+    <div className='container'>
+      <div className='numEntries'>
+        <ul>
+          <li onClick={e => setNumCardsPerPage(30)}>30</li>
+          <li className='unclickable'>|</li>
+          <li onClick={e => setNumCardsPerPage(50)}>50</li>
+        </ul>
       </div>
-    )
-  }
+      <div className="grid">
+        {mapHelper}
+      </div>
+        
+      <div className='pagination'>
+        <button onClick={decrementPageNum}>Prev</button>
+        {pageNum}
+        /
+        {maxPageNum}
+        <button onClick={incrementPageNum}>Next</button>
+      </div>
+    </div>
+  )
 }
 
 export default CardTable;

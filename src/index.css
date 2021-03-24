@@ -60,3 +60,42 @@ li:not(.unclickable):active {
 .pagination button:hover {
   background-color: lightblue;
 }
+
+/* --------------- Card Component --------------- */
+div.box {
+  min-height: 450px;
+  max-height: 450px;
+  max-height: 40px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+/* --------------- Card Table Component --------------- */
+.container{
+  margin: auto;
+  /* justify-items: center; */
+  text-align: center;
+  /* min-height: 100%; */
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+  width: 80%;
+  min-height: 1000px;
+}
+
+.grid {
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.pokemon {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-height: 400px;
+}

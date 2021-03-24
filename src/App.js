@@ -1,56 +1,32 @@
 import './App.css';
-import react from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navigation from './components/Navigation'
 import CardTable from './components/CardTable'
 
-class App extends react.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [pokemon, setPokemon] = useState([]);
 
-    this.state = {
-      pokemon: []
-    }
+  
 
-    
-    
-    
-    
-  }
-
-  componentDidMount() {
-    // Fetch pokemon data
-    axios
-    .get("https://pokeapi.co/api/v2/pokemon/?limit=1118/")
-    .then(response => {
-      this.setState({
-        pokemon: response.data.results
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      await axios
+      .get("https://pokeapi.co/api/v2/pokemon/?limit=1118/")
+      .then(response => {
+        setPokemon(response.data.results);
       })
-    })
-  }
+    };
+    fetchPokemon();
+  }, []);
 
-  render() {
-    return (
-      <div>
-        <header>
-          <link
-          rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-          crossorigin="anonymous"
-          />
-          <Navigation pokemon={this.state.pokemon}/>
-          <CardTable pokemon={this.state.pokemon}/>
-        </header>
-        <body>
-          <div className="App">
-            
-          </div>
-        </body>
-      </div>
-      
-    );
-  }
+  return (
+    <div>
+      <Navigation pokemon={pokemon}/>
+      <CardTable pokemon={pokemon}/>
+    </div>
+    
+  );
   
 }
   
