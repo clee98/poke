@@ -1,9 +1,8 @@
 import React from 'react';
-import { Navbar, NavDropdown, Nav, Form, FormControl, Button} from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import Search from './Search.jsx';
 
 const Navigation = ({ pokemon }) => {
-
   return (
     // <div className="Navigation">
       <Navbar bg="light" expand="lg">

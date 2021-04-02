@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Card , Button } from 'react-bootstrap';
 import Cards from './Cards'
 
 const CardTable = ({ pokemon }) => {
-
-  const [pokeOnPage, setPokeOnPage] = useState(pokemon.slice(0,30));
+  const [pokeOnPage, setPokeOnPage] = useState(pokemon.slice(0, 30));
   const [pageNum, setPageNum] = useState(1);
   const [numCardsPerPage, setNumCardsPerPage] = useState(30);
   const [maxPageNum, setMaxPageNum] = useState(38);
 
+  // Show {numCardsPerPage} amount of Pokemons on each page
   useEffect(() => {
-    console.log(pokeOnPage);
-    setPokeOnPage(pokemon.slice((pageNum - 1) * 30, pageNum * 30));
+    console.log("use effect");
+    const setPoke = () => {
+      setPokeOnPage(pokemon.slice((pageNum - 1) * 30, pageNum * 30));
+    };
+    setPoke();
+
   }, [pageNum]);
 
   const mapHelper = pokeOnPage.map((poke) => {
     return (
-      <Cards pokeInfo={poke}/>
+      <Cards key={poke.name} pokeInfo={poke} />
     );
   });
       
