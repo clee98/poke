@@ -9,13 +9,12 @@ const CardTable = ({ pokemon }) => {
 
   // Show {numCardsPerPage} amount of Pokemons on each page
   useEffect(() => {
-    console.log("use effect");
     const setPoke = () => {
       setPokeOnPage(pokemon.slice((pageNum - 1) * 30, pageNum * 30));
     };
     setPoke();
 
-  }, [pageNum]);
+  }, [pageNum, pokemon]);
 
   const mapHelper = pokeOnPage.map((poke) => {
     return (
@@ -47,6 +46,7 @@ const CardTable = ({ pokemon }) => {
         </ul>
       </div>
       <div className="grid">
+        {console.log("rendering...")}
         {mapHelper}
       </div>
         
