@@ -6,8 +6,13 @@
     display: flex;
     flex-wrap: wrap;
     /* flex-direction: row; */
-    width: 80%;
+    width: 100%;
     
+}
+
+a.item {
+    margin: auto;
+    padding: 0.2%;
 }
 
 .pokemon {
@@ -66,10 +71,32 @@ li:not(.unclickable):active {
 
 
 
+/* ################# Poke Info Page ################# */
+.poke.title {
+    font-size: 30px;
+    padding: 2%;
+}
+
+.column.title {
+    background-color: lightgrey;
+    border-radius: 5px;
+}
 
 
+/* Stats */
+.stat-name {
+    text-align: left;
+}
 
+.stat-detail {
+    text-align: right;
+}
 
-/* body {
-    margin: auto;
-} */
+.stat-items {
+    width: 100%;
+}
+
+.stat-title {
+    font-size: 20px;
+    font-weight: bold;
+}

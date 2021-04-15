@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
+import { Card } from 'react-bootstrap'
 
-const Cards = ({ pokeInfo }) => {
+const Cards = ({ pokeInfo, selectPoke }) => {
 
+  const [data, setData] = useState([]);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const name = pokeInfo.name;
@@ -14,17 +15,17 @@ const Cards = ({ pokeInfo }) => {
       await axios
       .get(pokeInfo.url)
       .then(({ data }) => {
+        setData(data);
         setImage(data.sprites.front_default);
       });
 
     };
     getCardInfo();
-  });
-
+  }, [pokeInfo.url]);
 
 
   return (
-    <Card style={{ width: '18rem' }} key={0} className='box'>
+    <Card style={{ width: '18rem' }} key={0} className='box' onClick={() => selectPoke(data)}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>

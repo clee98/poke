@@ -1,16 +1,16 @@
 import React from 'react';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
-import Search from './Search.jsx';
+import Search from './Search';
 
-const Navigation = ({ pokemon }) => {
+const Navigation = ({ pokemon, selectPoke }) => {
   return (
     // <div className="Navigation">
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -20,7 +20,7 @@ const Navigation = ({ pokemon }) => {
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Search pokemon={pokemon}/>
+          <Search pokemon={pokemon} selectPoke={selectPoke} />
         </Navbar.Collapse>
       </Navbar>
     // </div>
