@@ -2,6 +2,7 @@ import React from 'react';
 import './Box.css';
 
 const Link = ({ className, href, children }) => {
+  console.log(href);
   const onClick = (event) => {
     if (event.metaKey || event.ctrlKey) {
       return;

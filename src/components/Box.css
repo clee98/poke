@@ -73,13 +73,33 @@ li:not(.unclickable):active {
 
 /* ################# Poke Info Page ################# */
 .poke.title {
-    font-size: 30px;
-    padding: 2%;
+    display: block;
+    font-size: 40px;
+    margin: 2rem;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .column.title {
     background-color: lightgrey;
     border-radius: 5px;
+}
+
+/* Type */
+
+div.pokemon-type ul {
+    padding-left: 0;
+}
+
+div.type-area {
+    display: block;
+    text-align: center;
+}
+
+div.type-area li {
+    display: inline-block;
+    list-style: none;
+    pointer-events: none;
 }
 
 
@@ -99,4 +119,5 @@ li:not(.unclickable):active {
 .stat-title {
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
 }
