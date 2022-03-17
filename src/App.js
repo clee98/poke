@@ -19,6 +19,7 @@ const App = () => {
   }
 
   useEffect(() => {
+    // Only receives pokemon name and a URL for more data
     const fetchPokemon = async () => {
       await axios
         .get("https://pokeapi.co/api/v2/pokemon/?limit=1118/")

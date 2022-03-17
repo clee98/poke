@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { Card } from "react-bootstrap"
+import Type from "./Type"
 
 const Cards = ({ pokeInfo, selectPoke }) => {
   const [data, setData] = useState([])
@@ -16,6 +17,7 @@ const Cards = ({ pokeInfo, selectPoke }) => {
       })
     }
     getCardInfo()
+    console.log(data.types)
   }, [pokeInfo.url])
 
   let firstLetterToUpperCase = (str) => {
@@ -34,6 +36,9 @@ const Cards = ({ pokeInfo, selectPoke }) => {
       <Card.Body>
         <Card.Title>{firstLetterToUpperCase(name)}</Card.Title>
         <Card.Text>{description}</Card.Text>
+        <div className="pokemon-type">
+          <Type types={data.types}></Type>
+        </div>
       </Card.Body>
     </Card>
   )

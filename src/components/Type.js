@@ -1,102 +1,104 @@
-import React from 'react';
+import React from "react"
 
 const Type = ({ types }) => {
-  console.log(types);
+  if (!types) return <div></div>
   // List all pokemon types in this array
   // Plan is to maybe have each index contain the div elements needed to be rendered on site
   const type_arr = [
     {
       name: "normal",
-      color: "ui label"
+      color: "ui label",
     },
     {
       name: "fire",
-      color: "ui red label"
+      color: "ui red label",
     },
     {
       name: "water",
-      color: "ui blue label"
+      color: "ui blue label",
     },
     {
       name: "grass",
-      color: "ui green label"
+      color: "ui green label",
     },
     {
       name: "electric",
-      color: "ui yellow label"
+      color: "ui yellow label",
     },
     {
       name: "ice",
-      color: "ui teal label"
+      color: "ui teal label",
     },
     {
       name: "fighting",
-      color: "ui maroon label"
+      color: "ui maroon label",
     },
     {
       name: "poison",
-      color: "ui violet label"
+      color: "ui violet label",
     },
     {
       name: "ground",
-      color: "ui brown label"
+      color: "ui brown label",
     },
     {
       name: "flying",
-      color: "ui grey label"
+      color: "ui grey label",
     },
     {
       name: "psychic",
-      color: "ui purple label"
+      color: "ui purple label",
     },
     {
       name: "bug",
-      color: "ui olive label"
+      color: "ui olive label",
     },
     {
       name: "rock",
-      color: "ui brown label"
+      color: "ui brown label",
     },
     {
       name: "ghost",
-      color: "ui violet label"
+      color: "ui violet label",
     },
     {
       name: "dark",
-      color: "ui black label"
+      color: "ui black label",
     },
     {
       name: "dragon",
-      color: "ui red label"
+      color: "ui red label",
     },
     {
       name: "steel",
-      color: "ui grey label"
+      color: "ui grey label",
     },
     {
       name: "fairy",
-      color: "ui pink label"
-    }
-  ];
+      color: "ui pink label",
+    },
+  ]
+
+  let firstLetterToUpperCase = (str) => {
+    let temp = str[0].toUpperCase() + str.substring(1)
+    return temp
+  }
 
   const loadType = types.map((type) => {
-    console.log(type);
-    let foundType = type_arr.find(element => element.name === type.type.name);
-
+    console.log(type)
+    let foundType = type_arr.find((element) => element.name === type.type.name)
     return (
       <li className={foundType.color}>
-        {foundType.name}
+        {firstLetterToUpperCase(foundType.name)}
       </li>
-    );
-  });
+    )
+  })
 
   return (
     <div className="type-area">
-      <ul>
-        {loadType}
-      </ul>
+      <ul>{loadType}</ul>
     </div>
-  );
+  )
 }
 
-export default Type;
+export default Type
