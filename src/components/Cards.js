@@ -3,6 +3,8 @@ import axios from "axios"
 import { Card } from "react-bootstrap"
 import Type from "./Type"
 
+import { firstLetterToUpperCase } from "."
+
 const Cards = ({ pokeInfo, selectPoke }) => {
   const [data, setData] = useState([])
   const [description, setDescription] = useState("")
@@ -20,11 +22,6 @@ const Cards = ({ pokeInfo, selectPoke }) => {
     console.log(data.types)
   }, [pokeInfo.url])
 
-  let firstLetterToUpperCase = (str) => {
-    let temp = str[0].toUpperCase() + str.substring(1)
-    return temp
-  }
-
   return (
     <Card
       style={{ width: "18rem" }}
@@ -35,7 +32,6 @@ const Cards = ({ pokeInfo, selectPoke }) => {
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>{firstLetterToUpperCase(name)}</Card.Title>
-        <Card.Text>{description}</Card.Text>
         <div className="pokemon-type">
           <Type types={data.types}></Type>
         </div>

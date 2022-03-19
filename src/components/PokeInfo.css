@@ -1,0 +1,17 @@
+div.pokemon-type ul {
+  background-color: #ffffff;
+  /* border: 3px solid #000000;
+  padding: 2px;
+  width: 50%;
+  margin: 2px auto; */
+}
+
+/* PokeInfo styling by Types */
+
+div.fire {
+  background-color: #ff3d3d !important;
+}
+
+div.grass {
+  background-color: #43ff6f !important;
+}

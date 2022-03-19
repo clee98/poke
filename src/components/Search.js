@@ -56,11 +56,9 @@ const Search = ({ pokemon, selectPoke }) => {
           />
         )}
         onInputChange={(e) => setSearchText(e.target.value)}
-        getOptionSelected={(option, value) =>
-          option.name === value.name
-            ? handleSelected(option)
-            : console.log(`option: ${option.name}, value: ${value.name}`)
-        }
+        getOptionSelected={(option, value) => {
+          selectPoke(value)
+        }}
       />
 
       {/* <Button onClick={this.api} variant="outline-success">Search</Button> */}

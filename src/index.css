@@ -62,8 +62,8 @@ li:not(.unclickable):active {
 
 /* --------------- Card Component --------------- */
 div.box {
-  min-height: 450px;
-  max-height: 450px;
+  min-height: 350px;
+  max-height: 350px;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;

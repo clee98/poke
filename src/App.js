@@ -30,6 +30,14 @@ const App = () => {
     fetchPokemon()
   }, [])
 
+  useEffect(() => {
+    const fetchSelectedPokemon = async () => {
+      await axios.get(selectedPokeData.url).then((response) => {
+        window.location.href = `/${selectedPokeData.name}`
+      })
+    }
+  }, [selectedPokeData])
+
   return (
     <div>
       <Navigation pokemon={pokemon} selectPoke={getSelectedPokemon} />
