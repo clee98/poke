@@ -3,7 +3,7 @@ import React from "react"
 import Stats from "./Stats"
 import Type from "./Type"
 
-import { firstLetterToUpperCase } from "."
+import { firstLetterToUpperCase } from ".."
 import "./PokeInfo.css"
 
 const PokeInfo = ({ data }) => {
@@ -29,7 +29,7 @@ const PokeInfo = ({ data }) => {
               className={`ui massive image`}
               src={data.sprites.front_default}
             ></img>
-            <div className="pokemon-type">
+            <div className="pokemon-info-type">
               <Type types={data.types} />
             </div>
           </div>

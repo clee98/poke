@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import axios from "axios"
 
-import Navigation from "./components/Navigation"
-import CardTable from "./components/CardTable"
-import PokeInfo from "./components/PokeInfo"
+import Navigation from "./components/Navigation/Navigation"
+import CardTable from "./components/CardTable/CardTable"
+import PokeInfo from "./components/PokemonDataPage/PokeInfo"
+import HomePage from "./components/HomePage/HomePage";
 
 const App = () => {
   const [pokemon, setPokemon] = useState([])
@@ -46,11 +47,16 @@ const App = () => {
           <Route
             path="/"
             element={
+              <HomePage/>
+            }></Route>
+          <Route
+            path="/pokedex"
+            element={
               <CardTable pokemon={pokemon} selectPoke={getSelectedPokemon} />
             }
           ></Route>
           <Route
-            path={`/${selectedPokeData.name}`}
+            path={`/pokedex/${selectedPokeData.name}`}
             element={<PokeInfo data={selectedPokeData} />}
           ></Route>
         </Routes>

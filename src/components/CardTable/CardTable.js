@@ -33,8 +33,8 @@ const CardTable = ({ pokemon, selectPoke }) => {
 
   const mapHelper = pokeOnPage.map((poke) => {
     return (
-      <Link key={poke.name} to={`/${poke.name}`} className="ui item">
-        <Cards pokeInfo={poke} selectPoke={selectPoke} />
+      <Link key={poke.name} to={`/pokedex/${poke.name}`} className="ui item">
+          <Cards pokeInfo={poke} selectPoke={selectPoke} />
       </Link>
     )
   })

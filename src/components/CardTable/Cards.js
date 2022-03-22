@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { Card } from "react-bootstrap"
-import Type from "./Type"
+// Skeleton loading
+// import Skeleton from 'react-loading-skeleton'
+// import 'react-loading-skeleton/dist/skeleton.css'
+import Type from "../PokemonDataPage/Type"
 
-import { firstLetterToUpperCase } from "."
+import { firstLetterToUpperCase } from ".."
 
 const Cards = ({ pokeInfo, selectPoke }) => {
   const [data, setData] = useState([])

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { TextField } from "@material-ui/core"
 import { Autocomplete } from "@material-ui/lab"
 import { FormGroup } from "react-bootstrap"
-import "./Box.css"
+import "../Box.css"
 
 const Search = ({ pokemon, selectPoke }) => {
   const [array, setArray] = useState([])
