@@ -3,6 +3,7 @@ import { TextField } from "@material-ui/core"
 import { Autocomplete } from "@material-ui/lab"
 import { FormGroup } from "react-bootstrap"
 import "../Box.css"
+import SearchBar from './SearchBar';
 
 const Search = ({ pokemon, selectPoke }) => {
   const [array, setArray] = useState([])
@@ -42,27 +43,28 @@ const Search = ({ pokemon, selectPoke }) => {
   }
 
   return (
-    <FormGroup>
-      <Autocomplete
-        id="combo-box-demo"
-        options={array}
-        getOptionLabel={(option) => option.name}
-        style={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search a Pocket Monster"
-            variant="outlined"
-          />
-        )}
-        onInputChange={(e) => setSearchText(e.target.value)}
-        getOptionSelected={(option, value) => {
-          selectPoke(value)
-        }}
-      />
+    <SearchBar array={array} />
+    // <FormGroup>
+    //   <Autocomplete
+    //     id="combo-box-demo"
+    //     options={array}
+    //     getOptionLabel={(option) => option.name}
+    //     style={{ width: 300 }}
+    //     renderInput={(params) => (
+    //       <TextField
+    //         {...params}
+    //         label="Search a Pocket Monster"
+    //         variant="outlined"
+    //       />
+    //     )}
+    //     onInputChange={(e) => setSearchText(e.target.value)}
+    //     getOptionSelected={(option, value) => {
+    //       selectPoke(value)
+    //     }}
+    //   />
 
-      {/* <Button onClick={this.api} variant="outline-success">Search</Button> */}
-    </FormGroup>
+    //   {/* <Button onClick={this.api} variant="outline-success">Search</Button> */}
+    // </FormGroup>
   )
 }
 

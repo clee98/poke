@@ -53,6 +53,7 @@ const CardTable = ({ pokemon, selectPoke }) => {
 
   return (
     <div className="ui container">
+      <h1 className="pokedex-title">Pokedex</h1>
       <div className="numEntries">
         <ul>
           <li onClick={(e) => setNumCardsPerPage(30)}>30</li>
@@ -63,9 +64,27 @@ const CardTable = ({ pokemon, selectPoke }) => {
       <div className="ui grid">{mapHelper}</div>
 
       <div className="pagination">
-        <button onClick={decrementPageNum}>Prev</button>
-        {pageNum}/{maxPageNum}
-        <button onClick={incrementPageNum}>Next</button>
+        <div className="input-page-num">
+          Insert the Page Number you wanna navigate to :D
+          <input 
+            type="number"
+            max={maxPageNum}
+            min={1}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                if (e.target.value > 0 && e.target.value <= maxPageNum) {
+                  setPageNum(e.target.value);
+                } else {
+                  alert('Please enter a valid page number.');
+                }
+              }
+            }}></input>
+        </div>
+        <div className="content">
+          <button onClick={decrementPageNum}>Prev</button>
+          {pageNum}/{maxPageNum}
+          <button onClick={incrementPageNum}>Next</button>
+        </div>
       </div>
     </div>
   )

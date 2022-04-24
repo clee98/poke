@@ -1,3 +1,5 @@
+/* ############## Pokedex / Card Table ################ */
+
 .grid {
   margin: 0 !important;
   /* justify-items: center; */
@@ -62,6 +64,12 @@ li:not(.unclickable):active {
 
 .pagination button:hover {
   background-color: lightblue;
+}
+
+h1.pokedex-title {
+  padding: 10px;
+  font-size: 40px;
+  color: red;
 }
 
 /* ################# Card Component ################# */
