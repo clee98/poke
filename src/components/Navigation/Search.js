@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react"
 import { TextField } from "@material-ui/core"
 import { Autocomplete } from "@material-ui/lab"
 import { FormGroup } from "react-bootstrap"
+import SearchCard from './SearchCard'
 import "../Box.css"
-import SearchBar from './SearchBar';
 
 const Search = ({ pokemon, selectPoke }) => {
   const [array, setArray] = useState([])
   const [searchText, setSearchText] = useState("")
+  const [active, setActive] = useState(false)
 
   useEffect(() => {
     const api = async () => {
@@ -42,8 +43,28 @@ const Search = ({ pokemon, selectPoke }) => {
     selectPoke(option)
   }
 
+  const mapResults = array.map((poke) => {
+    console.log(poke);
+    return (
+      <SearchCard poke={poke} handleSelected={handleSelected} />
+    )
+  })
+
   return (
-    <SearchBar array={array} />
+    <div className="ui search">
+            <div className='ui icon input'>
+                <input 
+                  className='prompt' 
+                  type='text' 
+                  placeholder='Search a Pokemon...'
+                  onChange={(e) => setSearchText(e.target.value)} />
+                <i className='search icon' />
+            </div>
+            <div className='result'>
+                {active ? (mapResults) : ("")}
+            </div>
+            
+    </div>
     // <FormGroup>
     //   <Autocomplete
     //     id="combo-box-demo"
