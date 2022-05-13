@@ -57,11 +57,16 @@ const Search = ({ pokemon, selectPoke }) => {
                   className='prompt' 
                   type='text' 
                   placeholder='Search a Pokemon...'
-                  onChange={(e) => setSearchText(e.target.value)} />
+                  onChange={(e) => {
+                    setSearchText(e.target.value)
+                  }} 
+                  onFocus={setActive(true)} 
+                  onBlur={setActive(false)} />
                 <i className='search icon' />
             </div>
             <div className='result'>
-                {active ? (mapResults) : ("")}
+
+                {active ? mapResults : ""}
             </div>
             
     </div>
