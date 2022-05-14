@@ -22,7 +22,6 @@ const Cards = ({ pokeInfo, selectPoke }) => {
       })
     }
     getCardInfo()
-    console.log(data.types)
   }, [pokeInfo.url])
 
   return (

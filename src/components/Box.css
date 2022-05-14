@@ -133,13 +133,17 @@ div.result {
   position: absolute;
   z-index: 99 !important;
   width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 2px;
+  background-color: #fff;
 }
 
 div.search-card {
-  display: block;
+  display: flex;
   height: 50px;
-  margin-top: 2px;
   padding: 5px;
   background-color: white;
   border: 1px solid black;
+  align-items: center;
 }

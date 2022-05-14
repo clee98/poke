@@ -32,11 +32,15 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    const fetchSelectedPokemon = async () => {
-      await axios.get(selectedPokeData.url).then((response) => {
+    
+    const fetchSelectedPokemon = () => {
+      if (selectedPokeData.length > 0) {
         window.location.href = `/${selectedPokeData.name}`
-      })
+        
+      }
+      console.log(selectedPokeData)
     }
+    fetchSelectedPokemon()
   }, [selectedPokeData])
 
   return (

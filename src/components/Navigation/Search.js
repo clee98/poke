@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { TextField } from "@material-ui/core"
 import { Autocomplete } from "@material-ui/lab"
 import { FormGroup } from "react-bootstrap"
@@ -8,7 +8,10 @@ import "../Box.css"
 const Search = ({ pokemon, selectPoke }) => {
   const [array, setArray] = useState([])
   const [searchText, setSearchText] = useState("")
-  const [active, setActive] = useState(false)
+
+  const ref = useRef()
+  const ref2 = useRef()
+  const [active, setActive]= useState(false)
 
   useEffect(() => {
     const api = async () => {
@@ -20,11 +23,7 @@ const Search = ({ pokemon, selectPoke }) => {
       for (let i = 0; i < pokemon.length; i++) {
         // If the pokemon's name contains the string user inputted, then add that to the list
         if (pokemon[i].name.includes(searchText)) {
-          // arr.push(req.data.results[i]);
           tempArr.push(pokemon[i])
-          // this.setState({
-          //   arr: [...this.state.arr, this.props.pokemon[i]]
-          // })
 
           // break out of the for loop
           if (tempArr.length >= 5) {
@@ -39,19 +38,25 @@ const Search = ({ pokemon, selectPoke }) => {
     api()
   }, [searchText, pokemon, array.length])
 
-  const handleSelected = (option) => {
-    selectPoke(option)
-  }
+  useEffect(() => {
+    if (ref.current.contains(document.activeElement)) {
+      setActive(true);
+    } else if (ref2 !== undefined) {
+        console.log(ref2);
+    } else {
+      setActive(false);
+    }
+  }, [active])
 
   const mapResults = array.map((poke) => {
-    console.log(poke);
     return (
-      <SearchCard poke={poke} handleSelected={handleSelected} />
+      <SearchCard poke={poke} selectPoke={selectPoke} />
     )
   })
 
   return (
-    <div className="ui search">
+    <div className="ui search"
+       >
             <div className='ui icon input'>
                 <input 
                   className='prompt' 
@@ -60,14 +65,25 @@ const Search = ({ pokemon, selectPoke }) => {
                   onChange={(e) => {
                     setSearchText(e.target.value)
                   }} 
-                  onFocus={setActive(true)} 
-                  onBlur={setActive(false)} />
+                  ref={ref}
+                  onFocus={()=> setActive(true)}
+
+                   />
                 <i className='search icon' />
             </div>
-            <div className='result'>
+            {active && (
+              <div className='result'
+                ref={ref2}
+                onFocus={()=> setActive(true)}
+                onBlur={() => setActive(false)}
+                >
+                {mapResults}
+              </div>
+            )}
+            {/* <div className='result'>
 
-                {active ? mapResults : ""}
-            </div>
+                {active && mapResults}
+            </div> */}
             
     </div>
     // <FormGroup>
