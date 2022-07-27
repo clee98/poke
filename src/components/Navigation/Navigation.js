@@ -24,6 +24,7 @@ const Navigation = ({ pokemon, selectPoke }) => {
           </NavDropdown>
         </Nav>
         <Search pokemon={pokemon} selectPoke={selectPoke} />
+        
       </Navbar.Collapse>
     </Navbar>
     // </div>

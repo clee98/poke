@@ -2,7 +2,7 @@ import axios from 'axios'
 import react, { useEffect, useState } from 'react'
 import { firstLetterToUpperCase } from '..'
 
-const SearchCard = ({ poke, selectPoke }) => {
+const SearchCard = ({ poke, selectPoke, setURL }) => {
     const [data, setData] = useState([])
     const [image, setImage] = useState("")
     const [selected, setSelected] = useState(false)
@@ -17,19 +17,10 @@ const SearchCard = ({ poke, selectPoke }) => {
         getCardInfo()
     }, [poke.url])
 
-    useEffect(() => {
-        const selectPokemon = () => {
-            if (selected && data !== []) {
-                selectPoke(data)
-            } 
-        }
-        selectPokemon()
-        setSelected(false)
-    }, [selected])
-
     return (
+        
         <div className="search-card"
-            onClick={console.log("hi")}>
+            onClick={() => {selectPoke(data); setURL(poke.name)}}>
             <img src={image} style={{width: "30%", display: 'block'}}/>
             {firstLetterToUpperCase(poke.name)}
         </div>

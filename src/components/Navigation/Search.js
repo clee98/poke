@@ -2,16 +2,29 @@ import React, { useState, useEffect, useRef } from "react"
 import { TextField } from "@material-ui/core"
 import { Autocomplete } from "@material-ui/lab"
 import { FormGroup } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 import SearchCard from './SearchCard'
 import "../Box.css"
+
 
 const Search = ({ pokemon, selectPoke }) => {
   const [array, setArray] = useState([])
   const [searchText, setSearchText] = useState("")
+  const [URL, setURL] = useState("")
+  const navigate = useNavigate()
 
   const ref = useRef()
   const ref2 = useRef()
   const [active, setActive]= useState(false)
+
+  useEffect(() => {
+    const updateURL = () => {
+      if (URL !== "") {
+        navigate(`/pokedex/${URL}`)
+      }
+    }
+    updateURL()
+  }, [URL])
 
   useEffect(() => {
     const api = async () => {
@@ -50,7 +63,7 @@ const Search = ({ pokemon, selectPoke }) => {
 
   const mapResults = array.map((poke) => {
     return (
-      <SearchCard poke={poke} selectPoke={selectPoke} />
+      <SearchCard poke={poke} selectPoke={selectPoke} setURL={setURL} />
     )
   })
 
@@ -67,6 +80,7 @@ const Search = ({ pokemon, selectPoke }) => {
                   }} 
                   ref={ref}
                   onFocus={()=> setActive(true)}
+                  onBlur={() => {setTimeout(() => {setActive(false)}, 100); }}
 
                    />
                 <i className='search icon' />
@@ -75,7 +89,6 @@ const Search = ({ pokemon, selectPoke }) => {
               <div className='result'
                 ref={ref2}
                 onFocus={()=> setActive(true)}
-                onBlur={() => setActive(false)}
                 >
                 {mapResults}
               </div>

@@ -87,7 +87,7 @@ const Type = ({ types }) => {
   const loadType = types.map((type) => {
     let foundType = type_arr.find((element) => element.name === type.type.name)
     return (
-      <li className={foundType.color}>
+      <li key={type.type.name} className={foundType.color}>
         {firstLetterToUpperCase(foundType.name)}
       </li>
     )
